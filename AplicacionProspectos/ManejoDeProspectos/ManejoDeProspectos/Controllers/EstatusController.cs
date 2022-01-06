@@ -9,6 +9,7 @@ namespace ManejoDeProspectos.Controllers
 	class EstatusController
 	{
 		public string getNombre(string id) {
+
 			Models.Estatus e = new Models.Estatus();
 			return e.show(id);
 		}

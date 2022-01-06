@@ -30,9 +30,6 @@
 		{
 			this.btnSalir = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.tbObservaciones = new System.Windows.Forms.TextBox();
-			this.lblObservaciones = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
 			this.tbCodigoPostal = new System.Windows.Forms.TextBox();
 			this.tbNumero = new System.Windows.Forms.TextBox();
 			this.tbRfc = new System.Windows.Forms.TextBox();
@@ -51,10 +48,11 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.lblCalle = new System.Windows.Forms.Label();
 			this.lblNombre = new System.Windows.Forms.Label();
+			this.tbObservaciones = new System.Windows.Forms.TextBox();
+			this.lblObservaciones = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			this.gbDocuments = new System.Windows.Forms.GroupBox();
 			this.dgvDocuments = new System.Windows.Forms.DataGridView();
-			this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.lblDocumentos = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.cbEstatus = new System.Windows.Forms.ComboBox();
@@ -103,37 +101,6 @@
 			this.groupBox1.Size = new System.Drawing.Size(770, 331);
 			this.groupBox1.TabIndex = 15;
 			this.groupBox1.TabStop = false;
-			// 
-			// tbObservaciones
-			// 
-			this.tbObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tbObservaciones.Location = new System.Drawing.Point(185, 82);
-			this.tbObservaciones.Multiline = true;
-			this.tbObservaciones.Name = "tbObservaciones";
-			this.tbObservaciones.Size = new System.Drawing.Size(574, 61);
-			this.tbObservaciones.TabIndex = 28;
-			// 
-			// lblObservaciones
-			// 
-			this.lblObservaciones.AutoSize = true;
-			this.lblObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblObservaciones.Location = new System.Drawing.Point(20, 82);
-			this.lblObservaciones.Name = "lblObservaciones";
-			this.lblObservaciones.Size = new System.Drawing.Size(142, 24);
-			this.lblObservaciones.TabIndex = 27;
-			this.lblObservaciones.Text = "Observaciones:";
-			this.lblObservaciones.UseWaitCursor = true;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(87, 28);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(75, 24);
-			this.label1.TabIndex = 25;
-			this.label1.Text = "Estatus:";
-			this.label1.UseWaitCursor = true;
 			// 
 			// tbCodigoPostal
 			// 
@@ -315,23 +282,52 @@
 			this.lblNombre.Text = "Nombre(s):";
 			this.lblNombre.UseWaitCursor = true;
 			// 
+			// tbObservaciones
+			// 
+			this.tbObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbObservaciones.Location = new System.Drawing.Point(185, 82);
+			this.tbObservaciones.Multiline = true;
+			this.tbObservaciones.Name = "tbObservaciones";
+			this.tbObservaciones.Size = new System.Drawing.Size(574, 61);
+			this.tbObservaciones.TabIndex = 28;
+			// 
+			// lblObservaciones
+			// 
+			this.lblObservaciones.AutoSize = true;
+			this.lblObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblObservaciones.Location = new System.Drawing.Point(20, 82);
+			this.lblObservaciones.Name = "lblObservaciones";
+			this.lblObservaciones.Size = new System.Drawing.Size(142, 24);
+			this.lblObservaciones.TabIndex = 27;
+			this.lblObservaciones.Text = "Observaciones:";
+			this.lblObservaciones.UseWaitCursor = true;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(87, 28);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(75, 24);
+			this.label1.TabIndex = 25;
+			this.label1.Text = "Estatus:";
+			this.label1.UseWaitCursor = true;
+			// 
 			// gbDocuments
 			// 
 			this.gbDocuments.Controls.Add(this.dgvDocuments);
 			this.gbDocuments.Controls.Add(this.lblDocumentos);
 			this.gbDocuments.Location = new System.Drawing.Point(26, 512);
 			this.gbDocuments.Name = "gbDocuments";
-			this.gbDocuments.Size = new System.Drawing.Size(809, 232);
+			this.gbDocuments.Size = new System.Drawing.Size(828, 232);
 			this.gbDocuments.TabIndex = 14;
 			this.gbDocuments.TabStop = false;
 			// 
 			// dgvDocuments
 			// 
+			this.dgvDocuments.AllowUserToDeleteRows = false;
 			this.dgvDocuments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvDocuments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvDocuments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nombre,
-            this.documento});
 			this.dgvDocuments.Location = new System.Drawing.Point(17, 67);
 			this.dgvDocuments.Name = "dgvDocuments";
 			this.dgvDocuments.ReadOnly = true;
@@ -339,20 +335,6 @@
 			this.dgvDocuments.Size = new System.Drawing.Size(792, 139);
 			this.dgvDocuments.TabIndex = 6;
 			this.dgvDocuments.UseWaitCursor = true;
-			// 
-			// nombre
-			// 
-			this.nombre.FillWeight = 101.5228F;
-			this.nombre.HeaderText = "Nombre";
-			this.nombre.Name = "nombre";
-			this.nombre.ReadOnly = true;
-			// 
-			// documento
-			// 
-			this.documento.FillWeight = 98.47716F;
-			this.documento.HeaderText = "Documento";
-			this.documento.Name = "documento";
-			this.documento.ReadOnly = true;
 			// 
 			// lblDocumentos
 			// 
@@ -381,6 +363,7 @@
 			// 
 			// cbEstatus
 			// 
+			this.cbEstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbEstatus.FormattingEnabled = true;
 			this.cbEstatus.Items.AddRange(new object[] {
             "Enviado",
@@ -417,7 +400,9 @@
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.gbDocuments);
 			this.Controls.Add(this.groupBox2);
+			this.Location = new System.Drawing.Point(100, 100);
 			this.Name = "Evaluar";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "Evaluar";
 			this.Load += new System.EventHandler(this.Evaluar_Load);
 			this.groupBox1.ResumeLayout(false);
@@ -458,8 +443,6 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.GroupBox gbDocuments;
 		private System.Windows.Forms.DataGridView dgvDocuments;
-		private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-		private System.Windows.Forms.DataGridViewTextBoxColumn documento;
 		private System.Windows.Forms.Label lblDocumentos;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.ComboBox cbEstatus;

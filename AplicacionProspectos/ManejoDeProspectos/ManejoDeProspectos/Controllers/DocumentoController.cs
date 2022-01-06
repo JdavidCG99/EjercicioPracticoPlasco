@@ -8,15 +8,15 @@ namespace ManejoDeProspectos.Controllers
 {
 	class DocumentoController
 	{
-		public bool store(string nombre, Array document) {
-			byte[] y = ConvertToBytes(document);
+		public bool store(string nombre, string document) {
+			//byte[] y = ConvertToBytes(document);
 			//Byte[] b = Array.ConvertAll(document h => Convert.ToByte(h, 8));
 			//byte[] doz = Convert.T(document,8);
 			//doz.GetValue(document);
 
-			Models.Documento doc = new Models.Documento(nombre,y);
-			//return doc.save();
-			return false;
+			Models.Documento doc = new Models.Documento(nombre,document);
+			return doc.save();
+			//return false;
 		}
 
 		static public byte[] ConvertToBytes(Array myArray)
@@ -46,7 +46,6 @@ namespace ManejoDeProspectos.Controllers
 					bytes = BitConverter.GetBytes((double)obj);
 				}
 
-				//Etc etc...
 				if (bytes != null)
 				{
 					allBytes.AddRange(bytes);

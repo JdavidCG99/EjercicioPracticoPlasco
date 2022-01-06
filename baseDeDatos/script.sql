@@ -57,5 +57,14 @@ insert into Estatus values('Autorizado');
 insert into Estatus values('Rechazado');
 
 alter table prospecto add evaluado char(1) null
+alter table Documento alter column informacion varbinary(MAX) null
 
 select * from Prospecto
+select * from Documento
+select * from DocumentoProspecto
+select max(idProspecto) from Prospecto
+
+insert into DocumentoProspecto (idProspecto,idDocumento) values(8,13)
+
+select d.nombre from Documento as d inner join DocumentoProspecto as dc on d.idDocumento = dc.idDocumento inner join 
+Prospecto as p on dc.idProspecto = p.idProspecto where p.idProspecto = 14

@@ -13,18 +13,22 @@ namespace ManejoDeProspectos.Models
 		Conexion conex = new Conexion();
 
 		string nombre;
-		byte [] document;
+		string document;
 
-		public Documento(string nombre, byte [] document) {
+		public Documento(string nombre, string document) {
 			this.nombre = nombre;
 			this.document = document;
 		}
 
 		public bool save() {
-			//string doc = Convert.ToBase64String(this.document);
-			string query = "insert into" + table + " (nombre,informacion) values(" +
-				"'" + this.nombre+ "','"+this.document+"')";
+			string query = "insert into " + table + " (nombre,informacion) values(" +
+				"'" + this.nombre+ "',"+this.document+")";
 			return conex.ejecutar(query);
+		}
+
+		public int getId(string query)
+		{
+			return conex.getId(query);
 		}
 	}
 }

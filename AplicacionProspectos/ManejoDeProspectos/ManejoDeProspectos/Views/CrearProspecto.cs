@@ -16,15 +16,22 @@ namespace ManejoDeProspectos.Views
 		int contadorDocumentos = 0;
 		Controllers.ProspectoController prospecto = new Controllers.ProspectoController();
 		Controllers.Validaciones v = new Controllers.Validaciones();
+
 		public CrearProspecto()
 		{
 			InitializeComponent();
 		}
+
 		private void CrearProspecto_Load(object sender, EventArgs e)
 		{
+
 		}
+
+
 		string [] nombres;
 		Array [] documentos = new Array[100];
+
+
 		private void btnAggDocument_Click(object sender, EventArgs e)
 		{
 			openDialogArchivos.InitialDirectory = "C:\\";
@@ -41,46 +48,36 @@ namespace ManejoDeProspectos.Views
 					myStream.CopyTo(ms);
 					file = ms.ToArray();
 				}
-				string query = "insert into Documentos (nombre,informacion) values(" +
-				"'" + openDialogArchivos.SafeFileName + "','" + file + "')";
+				documentos[contadorDocumentos] = file;
 
-				////conex.ejecutar(query);
-				//documentos[contadorDocumentos] = file;
+				int row = dgvDocuments.Rows.Add();
+				dgvDocuments.Rows[row].Cells[0].Value = openDialogArchivos.SafeFileName;
+				dgvDocuments.Rows[row].Cells[1].Value = openDialogArchivos.FileName;
 
-				//int row = dgvDocuments.Rows.Add();
-				//dgvDocuments.Rows[row].Cells[0].Value = openDialogArchivos.SafeFileName;
-				////dgvDocuments.Rows[row].Cells[1].Value = ruta;
-				////nombres[0] = dgvDocuments.Rows[row].Cells[0].Value.ToString();
-				//contadorDocumentos++;
+				contadorDocumentos++;
+				
 			}
-			
+
 		}
 
 		private void btnGuardar_Click(object sender, EventArgs e) {
-			//{
-			//	int l = dgvDocuments.RowCount;
-			//	string[] nombres = new string[l];
-			//	string[] nombresReales = new string[l];
-			////char [] documentos = new char[l];
-			//int numDocumentos = dgvDocuments.RowCount - 1;
-			//nombres = new string [numDocumentos];
-			//for (int y = 0; y < numDocumentos;  y++)
-			//{ 
-			//	nombres[y] = Convert.ToString(dgvDocuments.Rows[y].Cells[0].Value);
-			//}
 
-			//for (int y = 0; y < numDocumentos; y++)
-			//{
-			//	MessageBox.Show(nombres[y]);
-			//	//MessageBox.Show(documentos[y].GetValue().ToString);
-			//}
+			int numDocumentos = dgvDocuments.RowCount - 1;
+			nombres = new string [numDocumentos];
+			for (int y = 0; y < numDocumentos;  y++)
+			{ 
+				nombres[y] = Convert.ToString(dgvDocuments.Rows[y].Cells[0].Value);
+			}
 
 			bool respuesta = prospecto.store(tbNombre.Text, tbApellido1.Text, tbApellido2.Text, tbCalle.Text, tbNumero.Text,
-				tbColonia.Text, tbCodigoPostal.Text, tbTelefono.Text, tbRfc.Text);
+				tbColonia.Text, tbCodigoPostal.Text, tbTelefono.Text, tbRfc.Text,documentos,nombres);
 
 			if (respuesta)
 			{
 				MessageBox.Show("Prospecto guardado con exito", "Atencion");
+				Prospectos verProspectos = new Prospectos();
+				verProspectos.Show();
+				this.Close();
 			}
 			else
 			{

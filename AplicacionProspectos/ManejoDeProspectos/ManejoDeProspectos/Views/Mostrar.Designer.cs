@@ -31,7 +31,7 @@
 			this.btnSalir = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.tbObservaciones = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
+			this.lblObservaciones = new System.Windows.Forms.Label();
 			this.tbEstatus = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.tbCodigoPostal = new System.Windows.Forms.TextBox();
@@ -54,8 +54,6 @@
 			this.lblNombre = new System.Windows.Forms.Label();
 			this.gbDocuments = new System.Windows.Forms.GroupBox();
 			this.dgvDocuments = new System.Windows.Forms.DataGridView();
-			this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.lblDocumentos = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.gbDocuments.SuspendLayout();
@@ -78,7 +76,7 @@
 			// groupBox1
 			// 
 			this.groupBox1.Controls.Add(this.tbObservaciones);
-			this.groupBox1.Controls.Add(this.label2);
+			this.groupBox1.Controls.Add(this.lblObservaciones);
 			this.groupBox1.Controls.Add(this.tbEstatus);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Controls.Add(this.tbCodigoPostal);
@@ -116,17 +114,17 @@
 			this.tbObservaciones.TabIndex = 28;
 			this.tbObservaciones.Visible = false;
 			// 
-			// label2
+			// lblObservaciones
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(21, 375);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(142, 24);
-			this.label2.TabIndex = 27;
-			this.label2.Text = "Observaciones:";
-			this.label2.UseWaitCursor = true;
-			this.label2.Visible = false;
+			this.lblObservaciones.AutoSize = true;
+			this.lblObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblObservaciones.Location = new System.Drawing.Point(21, 375);
+			this.lblObservaciones.Name = "lblObservaciones";
+			this.lblObservaciones.Size = new System.Drawing.Size(142, 24);
+			this.lblObservaciones.TabIndex = 27;
+			this.lblObservaciones.Text = "Observaciones:";
+			this.lblObservaciones.UseWaitCursor = true;
+			this.lblObservaciones.Visible = false;
 			// 
 			// tbEstatus
 			// 
@@ -334,17 +332,15 @@
 			this.gbDocuments.Controls.Add(this.lblDocumentos);
 			this.gbDocuments.Location = new System.Drawing.Point(18, 490);
 			this.gbDocuments.Name = "gbDocuments";
-			this.gbDocuments.Size = new System.Drawing.Size(809, 232);
+			this.gbDocuments.Size = new System.Drawing.Size(829, 232);
 			this.gbDocuments.TabIndex = 11;
 			this.gbDocuments.TabStop = false;
 			// 
 			// dgvDocuments
 			// 
+			this.dgvDocuments.AllowUserToDeleteRows = false;
 			this.dgvDocuments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvDocuments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvDocuments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nombre,
-            this.documento});
 			this.dgvDocuments.Location = new System.Drawing.Point(17, 67);
 			this.dgvDocuments.Name = "dgvDocuments";
 			this.dgvDocuments.ReadOnly = true;
@@ -352,20 +348,6 @@
 			this.dgvDocuments.Size = new System.Drawing.Size(792, 139);
 			this.dgvDocuments.TabIndex = 6;
 			this.dgvDocuments.UseWaitCursor = true;
-			// 
-			// nombre
-			// 
-			this.nombre.FillWeight = 101.5228F;
-			this.nombre.HeaderText = "Nombre";
-			this.nombre.Name = "nombre";
-			this.nombre.ReadOnly = true;
-			// 
-			// documento
-			// 
-			this.documento.FillWeight = 98.47716F;
-			this.documento.HeaderText = "Documento";
-			this.documento.Name = "documento";
-			this.documento.ReadOnly = true;
 			// 
 			// lblDocumentos
 			// 
@@ -388,7 +370,9 @@
 			this.Controls.Add(this.btnSalir);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.gbDocuments);
+			this.Location = new System.Drawing.Point(100, 100);
 			this.Name = "Mostrar";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "Mostrar";
 			this.Load += new System.EventHandler(this.Mostrar_Load);
 			this.groupBox1.ResumeLayout(false);
@@ -424,11 +408,9 @@
 		private System.Windows.Forms.Label lblNombre;
 		private System.Windows.Forms.GroupBox gbDocuments;
 		private System.Windows.Forms.DataGridView dgvDocuments;
-		private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-		private System.Windows.Forms.DataGridViewTextBoxColumn documento;
 		private System.Windows.Forms.Label lblDocumentos;
 		private System.Windows.Forms.TextBox tbObservaciones;
-		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label lblObservaciones;
 		private System.Windows.Forms.TextBox tbEstatus;
 		private System.Windows.Forms.Label label1;
 	}

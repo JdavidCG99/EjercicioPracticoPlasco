@@ -14,6 +14,7 @@ namespace ManejoDeProspectos.Controllers
 		public ProspectoController() {
 
 		}
+
 		public DataTable index() {
 			string query = "select p.idProspecto as Id, p.nombre as Nombre, p.primerApellido as Primer_Apellido, p.segundoApellido as Segundo_Apellido, d.nombre as Estatus from" +
 				" Prospecto as p inner join Estatus as d on p.idEstatus=d.idEstatus";
@@ -22,8 +23,9 @@ namespace ManejoDeProspectos.Controllers
 
 			return prospecto.get(query);
 		}
+
 		public bool store(string nombre, string primerApellido, string segundoApellido, string calle, string numero,
-			string colonia, string codigoPostal, string telefono, string rfc) {
+			string colonia, string codigoPostal, string telefono, string rfc,Array documentos,string [] nombres) {
 
 			try
 			{
@@ -54,20 +56,27 @@ namespace ManejoDeProspectos.Controllers
 				Models.Prospecto prospecto = new Models.Prospecto(nombre, primerApellido, segundoApellido, calle, numero,
 					colonia, codigoPostal, telefono, rfc, estatus, observaciones);
 
-				//DocumentoController doc = new DocumentoController();
-				//for(int y = 0; y < nombres.Length; y++)
-				//{
+				prospecto.save();
+
+				DocumentoController doc = new DocumentoController();
+				string idPros = Convert.ToString(prospecto.getId("select max(idProspecto) from Prospecto")); 
+
+				for(int y = 0; y < nombres.Length; y++)
+				{
 				//	MessageBox.Show(documentos[y].ToString());
 				//	//byte [] docActual = documentos[y].GetValue(); 
-				//	bool res = doc.store(nombres[y],documentos[y]);
-				//	if (!res)
-				//	{
-				//		MessageBox.Show("Error al guardar los documentos", "Atencion");
-				//		return false;
-				//	}
-				//}
+				    bool res = doc.store(nombres[y],"null");
+					string idDoc = Convert.ToString(prospecto.getId("select max(idDocumento) from Documento"));
 
-				return prospecto.save();
+					Models.DocumentoProspecto dp = new Models.DocumentoProspecto(idPros,idDoc);
+					if (!res || !dp.save())
+					{
+						MessageBox.Show("Error al guardar los documentos", "Atencion");
+						return false;
+					}
+				}
+
+				return true;
 			}
 			catch(Exception e)
 			{
@@ -76,15 +85,16 @@ namespace ManejoDeProspectos.Controllers
 			}
 			
 		}
+
 		public string[] show(string id) {
 			Models.Prospecto prospecto = new Models.Prospecto();
 
 			return prospecto.getProspecto(id);
 		}
 
-		public bool updateEstatus(string estatus, string id) {
+		public bool updateEstatus(string estatus, string id, string observaciones) {
 
-			string query = "update Prospecto set idEstatus = " + estatus + ", evaluado = 1 where idProspecto = " + id; 
+			string query = "update Prospecto set idEstatus = " + estatus + ", observaciones = '" + observaciones + "', evaluado = 1 where idProspecto = " + id; 
 
 			Models.Prospecto prospecto = new Models.Prospecto();
 
@@ -97,6 +107,16 @@ namespace ManejoDeProspectos.Controllers
 
 			return prospecto.getEvaluado(id);
 
+		}
+
+		public DataTable getDocumentos(string id)
+		{
+			string query = "select d.nombre as Nombre from Documento as d inner join DocumentoProspecto as dc on d.idDocumento = dc.idDocumento " +
+				" inner join Prospecto as p on dc.idProspecto = p.idProspecto where p.idProspecto = " + id;
+
+			Models.Prospecto prospecto = new Models.Prospecto();
+
+			return prospecto.get(query);
 		}
 	}	
 }

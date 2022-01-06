@@ -51,7 +51,6 @@ namespace ManejoDeProspectos.Models
 		{
 			try
 			{
-				//con = new Conexion();
 				comando = new SqlCommand(query,conectar());
 				int res = comando.ExecuteNonQuery();
 				cerrar();
@@ -130,8 +129,6 @@ namespace ManejoDeProspectos.Models
 			{ 
 
 				SqlCommand comando = new SqlCommand(query, conectar());
-				//conectar();
-				//comando.Parameters.AddWithValue("@nombre", nombre);
 				dato = Convert.ToString(comando.ExecuteScalar());
 				cerrar();
 
@@ -141,6 +138,23 @@ namespace ManejoDeProspectos.Models
 				MessageBox.Show("Error en la bdd \n Contacte a uno de los programadores", "Atencion");
 			}
 			return dato;
+		}
+
+		public int getId(string query)
+		{
+			int id;
+			try
+			{
+
+				SqlCommand comando = new SqlCommand(query, conectar());
+				id = Convert.ToInt32(comando.ExecuteScalar());
+				cerrar();
+			}
+			catch
+			{
+				id = 1;
+			}
+			return id;
 		}
 	}
 }

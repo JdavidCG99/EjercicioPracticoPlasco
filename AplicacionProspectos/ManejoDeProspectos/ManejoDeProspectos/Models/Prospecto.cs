@@ -24,9 +24,11 @@ namespace ManejoDeProspectos.Models
 		string rfc;
 		string estatus;
 		string observaciones;
+
 		public Prospecto() {
 
 		}
+
 		public Prospecto(string nombre, string primerApellido, string segundoApellido, string calle, string numero,
 			string colonia, string codigoPostal, string telefono, string rfc, string estatus, string observaciones)
 		{
@@ -69,6 +71,11 @@ namespace ManejoDeProspectos.Models
 		public string getEvaluado(string id)
 		{
 			return conex.getUnDato("select evaluado from Prospecto where idProspecto =" + id);
+		}
+
+		public int getId(string query) {
+
+			return conex.getId(query);
 		}
 	}
 }

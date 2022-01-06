@@ -16,6 +16,7 @@ namespace ManejoDeProspectos.Views
 		{
 			InitializeComponent();
 		}
+
 		Controllers.ProspectoController prospectos = new Controllers.ProspectoController();
 
 		private void Prospectos_Load(object sender, EventArgs e)
@@ -37,20 +38,40 @@ namespace ManejoDeProspectos.Views
 
 		private void btnVer_Click(object sender, EventArgs e)
 		{
-			string id = dgvProspectos.CurrentRow.Cells[0].Value.ToString();
-
-			Mostrar mostrarProspecto = new Mostrar(id);
-			mostrarProspecto.Show();
-			this.Hide();
+			try
+			{
+				string id = dgvProspectos.CurrentRow.Cells[0].Value.ToString();
+				Mostrar mostrarProspecto = new Mostrar(id);
+				mostrarProspecto.Show();
+				this.Hide();
+			}
+			catch
+			{
+				MessageBox.Show("No hay un prospecto seleccionado");
+			}
+			
 		}
 
 		private void btnEvaluar_Click(object sender, EventArgs e)
 		{
-			string id = dgvProspectos.CurrentRow.Cells[0].Value.ToString();
+			
+			try {
+				string id = dgvProspectos.CurrentRow.Cells[0].Value.ToString();
 
-			Evaluar evaluarProspecto = new Evaluar(id);
-			evaluarProspecto.Show();
-			this.Hide();
+				Evaluar evaluarProspecto = new Evaluar(id);
+				evaluarProspecto.Show();
+				this.Hide();
+			}
+			catch
+			{
+				MessageBox.Show("No hay un prospecto seleccionado");
+			}
+
+		}
+
+		private void Prospectos_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Application.Exit();
 		}
 	}
 }

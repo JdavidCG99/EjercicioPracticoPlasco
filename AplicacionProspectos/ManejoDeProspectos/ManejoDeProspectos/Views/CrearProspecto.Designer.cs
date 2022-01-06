@@ -383,7 +383,9 @@
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.gbDocuments);
 			this.Controls.Add(this.btnGuardar);
+			this.Location = new System.Drawing.Point(100, 100);
 			this.Name = "CrearProspecto";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "Agregar Prospecto";
 			this.UseWaitCursor = true;
 			this.Load += new System.EventHandler(this.CrearProspecto_Load);

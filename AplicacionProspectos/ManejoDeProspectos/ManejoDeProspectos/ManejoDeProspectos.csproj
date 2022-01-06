@@ -50,12 +50,6 @@
     <Compile Include="Controllers\EstatusController.cs" />
     <Compile Include="Controllers\ProspectoController.cs" />
     <Compile Include="Controllers\Validaciones.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Conexion.cs" />
     <Compile Include="Models\Documento.cs" />
     <Compile Include="Models\DocumentoProspecto.cs" />

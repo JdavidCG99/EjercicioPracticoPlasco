@@ -13,11 +13,13 @@ namespace ManejoDeProspectos.Views
 	public partial class Mostrar : Form
 	{
 		string id;
+
 		public Mostrar(string id)
 		{
 			InitializeComponent();
 			this.id = id;
 		}
+
 		Controllers.ProspectoController prospecto = new Controllers.ProspectoController();
 		Controllers.EstatusController estatus = new Controllers.EstatusController();
 
@@ -43,11 +45,12 @@ namespace ManejoDeProspectos.Views
 			tbRfc.Text = datos[8];
 			tbEstatus.Text = estatus.getNombre(datos[9]);
 			if (datos[9].Equals("3")) {
+				lblObservaciones.Visible = true;
 				tbObservaciones.Visible = true;
 			}
 			tbObservaciones.Text = datos[10];
 
-			
+			dgvDocuments.DataSource = prospecto.getDocumentos(id);
 		}
 	}
 }

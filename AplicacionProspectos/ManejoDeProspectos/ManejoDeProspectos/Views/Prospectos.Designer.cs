@@ -116,8 +116,11 @@
 			this.Controls.Add(this.btnVer);
 			this.Controls.Add(this.btnCrear);
 			this.Controls.Add(this.dgvProspectos);
+			this.Location = new System.Drawing.Point(100, 100);
 			this.Name = "Prospectos";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "Prospectos";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Prospectos_FormClosed);
 			this.Load += new System.EventHandler(this.Prospectos_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dgvProspectos)).EndInit();
 			this.ResumeLayout(false);
