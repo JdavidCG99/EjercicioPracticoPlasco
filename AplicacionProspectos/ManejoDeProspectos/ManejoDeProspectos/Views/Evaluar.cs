@@ -79,11 +79,18 @@ namespace ManejoDeProspectos.Views
 				MessageBox.Show("El estatus sigue en evaluacion, cambielo o use el botn de salir", "Atencion");
 			}
 			else {
-				prospecto.updateEstatus(Convert.ToString(cbEstatus.SelectedIndex + 1), this.id,tbObservaciones.Text);
-				MessageBox.Show("Evaluacion echa con exito","Finalizado");
-				Prospectos inicio = new Prospectos();
-				inicio.Show();
-				this.Hide();
+				bool res = prospecto.updateEstatus(Convert.ToString(cbEstatus.SelectedIndex + 1), this.id,tbObservaciones.Text);
+				if (res)
+				{
+					MessageBox.Show("Evaluacion echa con exito", "Finalizado");
+					Prospectos inicio = new Prospectos();
+					inicio.Show();
+					this.Hide();
+				}
+				else {
+					MessageBox.Show("Error al evaluar el prospecto", "Finalizado");
+				}
+				
 			}
 		}
 	}
